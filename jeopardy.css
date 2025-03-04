@@ -1,0 +1,155 @@
+/* CSS Palette */
+:root {
+  --primary: #115ff4;
+  --secondary: #060ce9;
+  --button: #ffffff;
+  --button-text: #060ce9;
+  --button-hover: #060ce9;
+  --button-text-hover: #ffffff;
+  --hover: #510270be;
+  --question: #8d2ab5;
+  --answer: #74119c;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--primary);
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+  background: var(--primary);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.welcome-message {
+  font-size: 2rem;
+  /* Make the message bigger */
+  font-weight: bold;
+  color: #ffffff;
+}
+
+#game-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#jeopardy-container {
+  width: 80%;
+  border-collapse: collapse;
+}
+
+/* Ensure the table layout stays fixed */
+#jeopardy {
+  width: 100%;
+  table-layout: fixed;
+  /* Ensures equal width for all columns */
+  border-collapse: collapse;
+}
+
+/* Category headers */
+th,
+td {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  background-color: var(--secondary);
+  border: 2px solid black;
+  vertical-align: middle;
+  /* Align text vertically */
+  padding: 10px;
+  /* Space inside the cell */
+  box-sizing: border-box;
+  /* Include padding in width and height calculations */
+  word-break: break-word;
+  /* Break words if they are too long */
+  overflow: visible;
+  /* Allow content to overflow if needed */
+}
+
+td {
+  cursor: pointer;
+  font-size: 0.80rem;
+}
+
+th {
+  font-size: 1rem;
+  border-bottom: 4px solid black;
+}
+
+td:hover {
+  background-color: var(--hover);
+}
+
+.answer-style {
+  background-color: var(--answer);
+}
+
+.question-style {
+  background-color: var(--question);
+}
+
+.start-btn,
+.restart-btn,
+.reveal-btn {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: var(--button);
+  color: var(--button-text);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.restart-btn {
+  margin-top: 20px;
+}
+
+.start-btn:hover,
+.restart-btn:hover,
+.reveal-btn:hover{
+  background-color: var(--button-hover);
+  color: var(--button-text-hover)
+}
+
+@media (max-width: 768px) {
+
+  th,
+  td {
+    width: 60px;
+    height: 60px;
+    font-size: 1rem;
+  }
+
+  #jeopardy {
+    width: 100%;
+  }
+
+  .start-btn,
+  .restart-btn {
+    width: 80%;
+    font-size: 1rem;
+  }
+}
