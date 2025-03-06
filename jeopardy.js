@@ -2,19 +2,19 @@
 const body = $("body");
 
 // Number of categories for the game
-const NUM_CATEGORIES = 6; 
+const NUM_CATEGORIES = 6;
 // Number of questions per category
-const NUM_QUESTIONS_PER_CAT = 5; 
+const NUM_QUESTIONS_PER_CAT = 5;
 // API endpoint for fetching categories and clues
-const API_URL = "https://rithm-jeopardy.herokuapp.com/api/"; 
+const API_URL = "https://rithm-jeopardy.herokuapp.com/api/";
 // Array to hold category data
-let categories = []; 
+let categories = [];
 // Array to hold extra categories for Daily Double
-let extraCategories = []; 
+let extraCategories = [];
 // Total number of questions in the game
-const TOTAL_QUESTIONS = NUM_CATEGORIES * NUM_QUESTIONS_PER_CAT; 
+const TOTAL_QUESTIONS = NUM_CATEGORIES * NUM_QUESTIONS_PER_CAT;
 // Flag to track if the game has started
-let gameStarted = false; 
+let gameStarted = false;
 // Counter to track how many questions have been answered
 let answeredQuestionsCount = 0;
 
@@ -66,7 +66,7 @@ async function getCategory(catId) {
                 question: clue.question || "No question available",
                 answer: clue.answer || "No answer available",
                 // Initial state: neither the question nor answer is shown
-                showing: null 
+                showing: null
             }))
         };
     } catch (error) {
@@ -88,7 +88,7 @@ async function getCategory(catId) {
  */
 async function fillTable() {
     // Clear any existing game content
-    $("#jeopardy-container").empty(); 
+    $("#jeopardy-container").empty();
     const title = $("<h1>").text("Jeopardy").attr("id", "game-title");
     $("#jeopardy-container").append(title);
 
@@ -98,7 +98,7 @@ async function fillTable() {
     let headerRow = $("<tr>");
     categories.forEach(cat => {
         // Add a header for each category
-        headerRow.append($(`<th>${cat.title}</th>`)); 
+        headerRow.append($(`<th>${cat.title}</th>`));
     });
 
     table.append($("<thead>").append(headerRow));
@@ -195,18 +195,18 @@ async function handleClick(evt) {
 
     if (clue.showing === null) {
         // Display the question
-        cell.html(clue.question); 
+        cell.html(clue.question);
         cell.removeClass("answer-style").addClass("question-style");
         // Set the clue state to showing the question
-        clue.showing = "question"; 
+        clue.showing = "question";
     } else if (clue.showing === "question") {
         // Display the answer
-        cell.html(clue.answer); 
+        cell.html(clue.answer);
         cell.removeClass("question-style").addClass("answer-style");
         // Set the clue state to showing the answer
         clue.showing = "answer";
-         // Increment the answered question count
-        answeredQuestionsCount++; 
+        // Increment the answered question count
+        answeredQuestionsCount++;
     }
 
     // If all questions are answered, trigger the Daily Double
@@ -228,9 +228,9 @@ function showLoadingView() {
  */
 async function setupAndStart() {
     // Reset the answered question count
-    answeredQuestionsCount = 0; 
+    answeredQuestionsCount = 0;
     // Mark the game as started
-    gameStarted = true; 
+    gameStarted = true;
     body.removeClass("daily-double-active");
     $(".modal-overlay").remove();
 
