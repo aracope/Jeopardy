@@ -36,6 +36,7 @@ body {
 
 /* Modal Content */
 .modal-content {
+  position: relative;
   background: var(--primary);
   padding: 20px;
   border-radius: 10px;
@@ -129,9 +130,20 @@ td:hover {
 
 .start-btn:hover,
 .restart-btn:hover,
-.reveal-btn:hover{
+.reveal-btn:hover {
   background-color: var(--button-hover);
   color: var(--button-text-hover)
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
